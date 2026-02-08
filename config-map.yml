@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bloodapp-config
+data:
+  DB_HOST: "mysqldb"
+  DB_PORT: "3306"
+[root@ip-172-31-85-208 vinay]# cat secret.yml
