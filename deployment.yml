@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bloodapp-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: bloodapp
+  template:
+    metadata:
+      labels:
+        app: bloodapp
+    spec:
+      containers:
+      - name: bloodapp-container
+        image: vinay9191/bloodyapp:appimage
+        ports:
+        - containerPort: 80
+        envFrom:
+        - configMapRef:
+            name: bloodapp-config
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "251Mi"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 5
