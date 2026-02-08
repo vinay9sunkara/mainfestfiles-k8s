@@ -26,11 +26,11 @@ spec:
                 name: bloodapp-secret
           resources:
             requests:
-              cpu: "100m"
-              memory: "128Mi"
+              cpu: "30m"
+              memory: "80Mi"
             limits:
-              cpu: "500m"
-              memory: "251Mi"
+              cpu: "100m"
+              memory: "150Mi"
           volumeMounts:
             - name: mysql-persistent-storage
               mountPath: /usr/share/nginx/html
